@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "dotnet",
+      "task": "build",
+      "group": "build",
+      "problemMatcher": "$msCompile",
+      "label": "dotnet: build"
+    },
+    {
+      "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "run"
+        // "--project",
+        // "cli-snap"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile",
+      "label": "dotnet: run"
+    }
+  ]
+}

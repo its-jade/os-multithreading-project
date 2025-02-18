@@ -1,0 +1,19 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/bin": true,
+    "**/obj": true
+  },
+  "[csharp]": {
+    "editor.tabSize": 4
+  },
+  "omnisharp.organizeImportsOnFormat": true,
+  "omnisharp.useEditorFormattingSettings": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "editor.formatOnSave": true
+}
