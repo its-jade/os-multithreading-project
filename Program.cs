@@ -2,20 +2,20 @@
 
     static void Main() {
 
-        // // ---- race condition simulation ---- // 
-        // UnsafeBankAccount account = new(1, 500);
-        // Console.WriteLine($"Initial balance: ${account.Balance}\n");
+        // ---- race condition simulation ---- // 
+        // UnsafeBankAccount unsafeAccount = new(1, 500);
+        // Console.WriteLine($"Initial balance: ${unsafeAccount.Balance}\n");
 
-        // account.PerformConcurrentTransactions(account);
+        // unsafeAccount.PerformConcurrentTransactions(unsafeAccount);
 
-        // Console.WriteLine($"Final balance (after race condition): ${account.Balance}");
+        // Console.WriteLine($"Final balance (after race condition): ${unsafeAccount.Balance}");
 
         // ---- race condition prevention ---- //
-        MutexBankAccount account = new(1, 500);
-        Console.WriteLine($"Initial balance: ${account.Balance}\n");
+        MutexBankAccount safeAccount = new(1, 500);
+        Console.WriteLine($"Initial balance: ${safeAccount.Balance}\n");
 
-        account.PerformConcurrentTransactions(account);
+        safeAccount.PerformConcurrentTransactions(safeAccount);
 
-        Console.WriteLine($"Final balance: ${account.Balance}");
+        Console.WriteLine($"Final balance: ${safeAccount.Balance}");
     }
 }

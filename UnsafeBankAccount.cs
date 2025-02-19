@@ -24,7 +24,7 @@ class UnsafeBankAccount {
             Balance -= amount;
             Console.WriteLine($"Current balance: ${temp} \nWithdrawing ${amount} from Account {ID} \nNew balance: ${Balance}");
         } else {
-            Console.WriteLine($"Insufficient funds in Account {ID}");
+            Console.WriteLine($"Insufficient funds in Account {ID}\n");
         }
     }
 
