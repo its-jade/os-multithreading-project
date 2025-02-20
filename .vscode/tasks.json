@@ -12,9 +12,9 @@
       "type": "shell",
       "command": "dotnet",
       "args": [
-        "run"
-        // "--project",
-        // "cli-snap"
+        "run",
+        "--project",
+        "src/os-multithreading-project.csproj"
       ],
       "group": {
         "kind": "build",
@@ -22,6 +22,19 @@
       },
       "problemMatcher": "$msCompile",
       "label": "dotnet: run"
+    },
+    {
+      "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "test",
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile",
+      "label": "dotnet: test"
     }
   ]
 }
