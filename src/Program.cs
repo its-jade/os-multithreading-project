@@ -2,56 +2,47 @@
 
     static void Main() {
 
-        // *** race condition simulation *** // 
-        // UnsafeBankAccount unsafeAccount = new(1, 500);
-        // Console.WriteLine($"Initial balance: ${unsafeAccount.Balance}\n");
+        Simulations simulation = new Simulations();
+        Boolean isRunning = true;
 
-        // unsafeAccount.PerformConcurrentTransactions(unsafeAccount);
+        while (isRunning) {
 
-        // Console.WriteLine($"Final balance (after race condition): ${unsafeAccount.Balance}");
+            Console.WriteLine("Select a simulation: \n1. Race Condition\n2. Resolved Race Condition\n3. Deadlock\n4. Resolved Deadlock\n5. Quit");
+            string selection = Console.ReadLine() ?? string.Empty;
 
-        // ------------------------------------------------------------------------------------- //
+            switch (selection) {
+                case "1":
+                    Console.WriteLine("\nRace Condition Simulation");
+                    simulation.RaceCondition();
+                    break;
 
-        // *** race condition prevention *** //
-        // MutexBankAccount safeAccount = new(1, 500);
-        // Console.WriteLine($"Initial balance: ${safeAccount.Balance}\n");
+                case "2":
+                    Console.WriteLine("\nResolved Race Condition Simulation");
+                    simulation.ResolvedRaceCondition();
+                    break;
 
-        // safeAccount.PerformConcurrentTransactions(safeAccount);
+                case "3":
+                    Console.WriteLine("\nDeadlock Simulation");
+                    simulation.Deadlock();
+                    break;
 
-        // Console.WriteLine($"Final balance: ${safeAccount.Balance}");
+                case "4":
+                    Console.WriteLine("\nResolved Deadlock Simulation");
+                    simulation.ResolvedDeadlock();
+                    break;
 
-        // ------------------------------------------------------------------------------------- //
+                case "5":
+                    Console.WriteLine("\nExiting Multi-threaded Program");
+                    isRunning = false;
+                    break;
 
-        // *** deadlock simulation *** //
-        // DeadlockBankAccount account1 = new(1, 500);
-        // DeadlockBankAccount account2 = new(2, 500);
+                default:
+                    Console.WriteLine("\nInvalid selection, please try again");
+                    break;
+            }
+        }
 
-        // Thread t1 = new Thread(() => DeadlockBank.Transfer(account1, account2, 100));
-        // Thread t2 = new Thread(() => DeadlockBank.Transfer(account2, account1, 50));
 
-        // t1.Start();
-        // t2.Start();
 
-        // t1.Join();
-        // t2.Join();
-
-        // Console.WriteLine($"Final Balances:\nAccount 1 = ${account1.Balance} \nAccount 2 = ${account2.Balance}");
-
-        // ------------------------------------------------------------------------------------- //
-
-        // *** ordered locking simulation *** //
-        DeadlockBankAccount account1 = new(1, 500);
-        DeadlockBankAccount account2 = new(2, 500);
-
-        Thread t1 = new Thread(() => OrderedLockBank.Transfer(account1, account2, 100));
-        Thread t2 = new Thread(() => OrderedLockBank.Transfer(account2, account1, 50));
-
-        t1.Start();
-        t2.Start();
-
-        t1.Join();
-        t2.Join();
-
-        Console.WriteLine($"Final Balances:\nAccount 1 = ${account1.Balance} \nAccount 2 = ${account2.Balance}");
     }
 }

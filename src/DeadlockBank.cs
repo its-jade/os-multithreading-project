@@ -1,5 +1,6 @@
 class DeadlockBank {
     public static void Transfer(DeadlockBankAccount from, DeadlockBankAccount to, double amount) {
+
         lock (from.GetLock()) {
             Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} locked Account {from.ID} and is waiting for Account {to.ID}\n");
             Thread.Sleep(100); // simulate delay
