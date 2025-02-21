@@ -53,4 +53,25 @@ public class Simulations {
 
         Console.WriteLine($"Final Balances:\nAccount 1 = ${account1.Balance} \nAccount 2 = ${account2.Balance}\n");
     }
+
+    public void SimulateMultipleCustomers() {
+        MutexBankAccount account = new MutexBankAccount(1, 1000.0);
+        Console.WriteLine($"Initial balance: ${account.Balance}\n");
+
+        Thread[] customerThreads = new Thread[10];
+
+        for (int i = 0; i < customerThreads.Length; i++) {
+            customerThreads[i] = new Thread(() => {
+                account.Deposit(100);
+                account.Withdraw(50);
+            });
+            customerThreads[i].Start();
+        }
+
+        foreach (var thread in customerThreads) {
+            thread.Join();
+        }
+
+        Console.WriteLine($"Final balance (after multiple customers): ${account.Balance}\n");
+    }
 }

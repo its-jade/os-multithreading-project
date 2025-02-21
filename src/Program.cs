@@ -7,7 +7,7 @@
 
         while (isRunning) {
 
-            Console.WriteLine("Select a simulation: \n1. Race Condition\n2. Resolved Race Condition\n3. Deadlock\n4. Resolved Deadlock\n5. Quit");
+            Console.WriteLine("Select a simulation: \n1. Race Condition\n2. Resolved Race Condition\n3. Deadlock\n4. Resolved Deadlock\n5. Multiple Customers\n6. Quit");
             string selection = Console.ReadLine() ?? string.Empty;
 
             switch (selection) {
@@ -32,6 +32,11 @@
                     break;
 
                 case "5":
+                    Console.WriteLine("\nMultiple Customers Simulation");
+                    simulation.SimulateMultipleCustomers();
+                    break;
+
+                case "6":
                     Console.WriteLine("\nExiting Multi-threaded Program");
                     isRunning = false;
                     break;
@@ -41,8 +46,5 @@
                     break;
             }
         }
-
-
-
     }
 }
