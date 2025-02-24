@@ -37,8 +37,8 @@ public class Simulations {
     }
 
     public void ResolvedDeadlock() {
-        DeadlockBankAccount account1 = new(1, 500);
-        DeadlockBankAccount account2 = new(2, 500);
+        BankAccount account1 = new(1, 500);
+        BankAccount account2 = new(2, 500);
 
         Console.WriteLine($"Account {account1.ID} initial balance: ${account1.Balance} \nAccount {account2.ID} initial balance: ${account2.Balance}\n");
 
