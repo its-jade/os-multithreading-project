@@ -1,9 +1,9 @@
-class DeadlockBankAccount {
+class BankAccount {
     public int ID { get; }
     public double Balance { get; set; }
     private readonly object lockObj = new();
 
-    public DeadlockBankAccount(int id, double balance) {
+    public BankAccount(int id, double balance) {
         ID = id;
         Balance = balance;
     }

@@ -1,8 +1,8 @@
 class OrderedLockBank {
-    public static void Transfer(DeadlockBankAccount from, DeadlockBankAccount to, double amount) {
+    public static void Transfer(BankAccount from, BankAccount to, double amount) {
         // order locks based on account ID
-        DeadlockBankAccount first = from.ID < to.ID ? from : to;
-        DeadlockBankAccount second = from.ID < to.ID ? to : from;
+        BankAccount first = from.ID < to.ID ? from : to;
+        BankAccount second = from.ID < to.ID ? to : from;
 
         lock (first.GetLock()) {
             Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} locked Account {first.ID}\n");

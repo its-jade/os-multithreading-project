@@ -14,7 +14,7 @@ class UnsafeBankAccount {
         double temp = Balance;
         Thread.Sleep(10); // simulating delay
         Balance += amount; // race condition
-        Console.WriteLine($"Current balance: ${temp} \nDepositing ${amount} to Account {ID} \nNew balance: ${Balance}");
+        Console.WriteLine($"Current balance: ${temp} \nDepositing ${amount} to Account {ID} \nNew balance: ${Balance}\n");
     }
 
     public void Withdraw(double amount) {
@@ -22,7 +22,7 @@ class UnsafeBankAccount {
             double temp = Balance;
             Thread.Sleep(10); // simulating delay
             Balance -= amount;
-            Console.WriteLine($"Current balance: ${temp} \nWithdrawing ${amount} from Account {ID} \nNew balance: ${Balance}");
+            Console.WriteLine($"Current balance: ${temp} \nWithdrawing ${amount} from Account {ID} \nNew balance: ${Balance}\n");
         } else {
             Console.WriteLine($"Insufficient funds in Account {ID}\n");
         }
@@ -32,7 +32,7 @@ class UnsafeBankAccount {
         Thread[] threads = new Thread[10];
 
         for (int i = 0; i < threads.Length; i++) {
-            int threadIndex = i + 1; // Capture the value properly
+            int threadIndex = i + 1;
 
             threads[i] = new Thread(() => {
                 if (threadIndex % 2 == 0) {
