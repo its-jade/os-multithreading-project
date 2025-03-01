@@ -1,4 +1,6 @@
-﻿class Program {
+﻿// link to github repo: https://github.com/its-jade/os-multithreading-project
+
+class Program {
 
     static void Main() {
 
